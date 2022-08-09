@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .forms import ProjectForm
 from .models import Project
+from django.db.models import Count
 
 def home(request):
-    project_list = Project.objects.all()
+    project_list =Project.objects.filter().annotate(bugscount=Count('bug'))
     page = request.GET.get('page',1)
 
-    paginator = Paginator(project_list,2)
+    paginator = Paginator(project_list,3)
     try:
         project_list = paginator.page(page)
     except PageNotAnInteger:

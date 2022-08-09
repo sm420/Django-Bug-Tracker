@@ -14,5 +14,8 @@ class ProjectForm(forms.ModelForm):
             }),
             'technology': forms.TextInput(attrs = {
                 'class': 'form-control'
+            }),
+            'teamname': forms.TextInput(attrs = {
+                'class': 'form-control'
             })
         }

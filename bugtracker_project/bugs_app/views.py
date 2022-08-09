@@ -24,7 +24,6 @@ def bug_add(request,project_id):
             bug.project_id = project
             bug.save()
             a = reverse('bug_list', args=[project_id])
-            
             return redirect(a)
             
     else:
